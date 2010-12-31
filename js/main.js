@@ -1,12 +1,12 @@
-require(['lib/caat', 'lib/Stats'], function()
-{
-	require.ready(function()
-	{
-
+(function(){
+	 function onReady(e) {
 		var director = new CAAT.Director().initialize(window.innerWidth - 20, window.innerHeight - 20);
 		CAAT.GlobalDisableEvents();
 		// Insert into HTML
-		$(director.canvas).appendTo(  $('body') );
+
+		var container = document.getElementById('container');
+
+		container.appendChild(director.canvas);
 
 		// Start our scene created below
 		var packedCircleScene = new PackedCircleScene();
@@ -16,8 +16,11 @@ require(['lib/caat', 'lib/Stats'], function()
 
 		// Start it up
 		packedCircleScene.start();
-	})
-});
+	 }
+
+	// Wait for when ready
+	window.addEventListener('load', onReady, false)
+})();
 
 (function() {
 	PackedCircleScene = function() {
