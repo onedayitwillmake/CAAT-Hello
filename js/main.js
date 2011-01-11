@@ -1,21 +1,24 @@
-require(['lib/caat', 'lib/Stats'], function()
-{
-	require.ready(function()
-	{
 
+(function(){
+	 function onReady(e)
+	 {
 		var director = new CAAT.Director().initialize(900, 600);
 		initWithDirector(director);
-		// Insert canvas into HTML
-		$(director.canvas).appendTo(  $('body') );
 		director.loop(60);
-	})
-});
+
+		var container = document.getElementById('container');
+		container.appendChild(director.canvas);
+	 }
+
+	// Wait for when ready
+	window.addEventListener('load', onReady, false)
+})();
 
 function initWithDirector(director)
 {
 	var scene = new CAAT.Scene().create();
 
-	for(var i = 0; i < 50; i++)
+	for(var i = 0; i < 1; i++)
 	{
 		var rectangleActor = new CAAT.ShapeActor().create();
 		rectangleActor.setShape( CAAT.ShapeActor.prototype.SHAPE_RECTANGLE ).
@@ -25,9 +28,9 @@ function initWithDirector(director)
 				setStrokeStyle('#ff0000');
 
 
-		var scaleBehavior = animateInUsingScale(rectangleActor, Math.random() * 1000, 1200, Math.random() * 5, 0);
-		scaleBehavior.setCycle(true);
-		scaleBehavior.setPingPong(true);
+//		var scaleBehavior = animateInUsingScale(rectangleActor, Math.random() * 1000, 1200, Math.random() * 5, 0);
+//		scaleBehavior.setCycle(true);
+//		scaleBehavior.setPingPong(true);
 		scene.addChild(rectangleActor);
 	}
 
