@@ -2,8 +2,8 @@
 	 function onReady(e) {
 		var director = new CAAT.Director().initialize(window.innerWidth - 20, window.innerHeight - 20);
 		CAAT.GlobalDisableEvents();
+		
 		// Insert into HTML
-
 		var container = document.getElementById('container');
 
 		container.appendChild(director.canvas);
